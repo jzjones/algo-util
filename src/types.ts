@@ -31,3 +31,9 @@ export type NetworkAccount = {
   address: string,
   mnemonic: string
 }
+
+export type AccountAsset = {
+  amount: number,
+  "asset-id": number,
+  "is-frozen": boolean
+}

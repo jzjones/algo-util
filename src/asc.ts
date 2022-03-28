@@ -29,3 +29,34 @@ export async function deployContract(approvalProgram: Uint8Array, clearProgram: 
 
   return appId;
 }
+
+type AppGlobalState = {
+  key: string,
+  value: {
+    bytes: string,
+    type: number,
+    uint: number
+  }
+}
+
+export function parseAppState(globalState: AppGlobalState[]) {
+  const stateObj: { [key: string]: Buffer | number | string } = {};
+  for (let state of globalState) {
+    let value: string | number;
+    // byteslice
+    if (state.value.type === 1) {
+      value = Buffer.from(state.value.bytes, 'base64').toString();
+    }
+    // uint
+    else if (state.value.type === 2) {
+      value = state.value.uint;
+    }
+    // not byteslice or uint
+    else {
+      throw new Error("State type is not defined");
+    }
+    const key = Buffer.from(state.key, 'base64').toString()
+    stateObj[key] = value;
+  }
+  return stateObj;
+}
