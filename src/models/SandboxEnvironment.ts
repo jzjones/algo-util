@@ -29,7 +29,7 @@ export default class SandboxEnvironment {
 
   constructor () {
     this._environment = new DockerComposeEnvironment(path.resolve(__dirname, "../../docker"), "docker-compose.yaml")
-      .withWaitStrategy("algod_1", Wait.forLogMessage("Node running and accepting RPC requests over HTTP on port [::]:4001. Press Ctrl-C to exit"));
+      .withWaitStrategy("algod_1", Wait.forLogMessage("http server started on [::]:4001"));
   }
 
   async up() {
