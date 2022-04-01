@@ -11,6 +11,7 @@
     "lib/**/*"
   ],
   "scripts": {
+    "doc": "jsdoc -c jsdoc.json",
     "prepare": "npm run build",
     "build": "tsc",
     "build:watch": "tsc --watch",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "algosdk": "^1.14.0",
+    "jsdoc": "^3.6.10",
     "testcontainers": "^8.4.0"
   },
   "devDependencies": {

@@ -1,6 +1,13 @@
 import { readFileSync } from "fs";
 import { ABIContract, ABIMethod } from "algosdk";
 
+/**
+ * This loads an ABI contract from a specified file.
+ * The return type is ABIContract
+ * 
+ * @param {string} specFile 
+ * @returns {ABIContract 
+ */
 export function loadABIContract(specFile: string): ABIContract {
   return new ABIContract(JSON.parse(readFileSync(specFile).toString()));
 }
